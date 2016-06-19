@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<body>
+<nav class="navbar navbar-info" role="navigation">
+	<div class="container-fluid">
+    	<div class="navbar-header">
+    		<h:link value="HotelSoft" styleClass="navbar-brand" outcome="home"></h:link>
+    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+    		</button>
+    		
+    	</div>
+
+    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		<ul class="nav navbar-nav">
+				
+				<li><h:link value="Clientes" outcome="listarClientes" ></h:link></li>
+								
+				<li><h:link value="Quartos" outcome="listarQuartos"></h:link></li>
+        		
+        		<li><h:link value="Reservas" outcome="listarReservas"></h:link></li>
+        		
+    		</ul>
+    		<ul class="nav navbar-nav navbar-right">
+    			<li><h:link value="Sair" outcome="login"></h:link></li>
+    		</ul>
+    	</div>
+	</div>
+</nav>
+</body>
+</html>

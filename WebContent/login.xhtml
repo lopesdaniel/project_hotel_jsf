@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/index.xhtml">
+	<ui:define name="header"></ui:define>
+    <ui:define name="content">
+    	<div class="page-header" align="center">
+       		<h1>HotelSoft</h1>
+       	</div>
+    	
+    	<div class="page-body">
+    	<div class="col-md-offset-4 col-lg-4">
+            <div class="bs-component">
+
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Acesso ao Sistema</h3>
+                </div>
+                <h:form>
+	                <div class="panel-body">
+		                  <div class="form-group has-info">
+		                    <div class="col-lg-12">
+		                    	<strong><h:outputText value="Login"></h:outputText></strong>
+			                	<h:inputText name="name" styleClass="form-control" value="#{loginBean.usuario.login}" required="true" label="Login" >
+			                		<f:validateLength minimum="3" maximum="10"/>
+			                	</h:inputText>
+		                    </div>
+		                  </div>
+						  <div class="form-group has-info">
+			                <div class="col-lg-12" style="margin-top: 10px;">
+			                	<strong><h:outputText value="Password"></h:outputText></strong>
+			                	<h:inputSecret name="password" styleClass="form-control" value="#{loginBean.usuario.senha}" required="true" label="Senha" >
+			                		<f:validateLength minimum="3" maximum="10"/>
+			                		<span class="material-icons form-control-feedback">clear</span>
+			                	</h:inputSecret>
+							</div>
+		                  </div>
+	                </div>
+	               	<div class="panel-footer" align="center">
+	               		<h:commandButton  value="Entrar" action="#{loginBean.efetuarLogin}" styleClass="btn btn-raised btn-info btn-group-justified"></h:commandButton>
+	                </div>
+	                <h:messages id="msgErro" styleClass="alert alert-danger" />
+			    </h:form>
+              </div>
+            </div>
+          </div>
+        </div>
+    	
+    		
+    		
+    	
+    </ui:define>
+    
+</ui:composition>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/WEB-INF/templates/index.xhtml">
+	<ui:define name="content">
+		<div class="page-header">
+             <h1>Quartos</h1>
+	    </div>
+	    <div class="page-body">
+	    	<div class="col-lg-10">
+	    		<div class="bs-component">
+	    			<div class="row-fluid">
+	    				<h:form>
+	    					<h:commandLink styleClass="btn btn-info" value="Cadastrar novo quarto..." action="cadastrarQuartos" actionListener="#{quartoBean.novoReg}"/>
+	    					<h:dataTable value="#{quartoBean.quartos}" var="dados" styleClass="table table-hover">
+								<h:column>
+									<f:facet name="header" styleClass="box_decorate">
+										<h:outputText value="#" />
+									</f:facet>
+									<h:outputText value="#{dados.id}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Número" />
+									</f:facet>
+									<h:outputText value="#{dados.numero}"/>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Tipo" />
+									</f:facet>
+									<h:outputText value="#{dados.tipo}"/>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Valor" />
+									</f:facet>
+									<h:outputText value="#{dados.valor}">
+										<f:convertNumber type="currency" />
+									</h:outputText>	
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Disponível ?" />
+									</f:facet>
+									<h:outputText value="#{dados.disponivel}"/>
+								</h:column>
+								<h:column styleClass="td-actions text-right">
+									<f:facet name="header">
+										<h:outputText value="Ações"/>
+									</f:facet>
+									<h:commandButton value="EDITAR" styleClass="btn btn-raised btn-default btn-xs" action="editQuarto" actionListener="#{quartoBean.selecionarReg()}" style="margin-right: 10px;"/>
+									<h:commandButton value="DELETAR" styleClass="btn btn-raised btn-danger btn-xs" action="delQuarto" actionListener="#{quartoBean.selecionarReg()}" />
+									
+								</h:column>	
+							</h:dataTable>
+	    				</h:form>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	</ui:define>
+</ui:composition>
+
+</html>

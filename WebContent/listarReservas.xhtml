@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/WEB-INF/templates/index.xhtml">
+	<ui:define name="content">
+		<div class="page-header">
+             <h1>Reservas</h1>
+	    </div>
+	    <div class="page-body">
+	    	<div class="col-lg-10">
+	    		<div class="bs-component">
+	    			<div class="row-fluid">
+	    				<h:form>
+	    					<h:commandLink styleClass="btn btn-info" value="Cadastrar nova Reserva..." action="cadastrarReservas" actionListener="#{reservaBean.novoReg}"/>
+	    					<h:dataTable value="#{reservaBean.reservas}" var="dados" styleClass="table table-hover">
+								<h:column>
+									<f:facet name="header" styleClass="box_decorate">
+										<h:outputText value="#" />
+									</f:facet>
+									<h:outputText value="#{dados.id}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Cliente" />
+									</f:facet>
+									<h:outputText value="#{dados.cliente}" converter="clienteConverterNome"/>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Quarto" />
+									</f:facet>
+									<h:outputText value="#{dados.quarto}" converter="quartoConverterNumero"/>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Data de Entrada" />
+									</f:facet>
+									<h:outputText value="#{dados.dataEnt}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Data de Saída"/>
+									</f:facet>
+									<h:outputText value="#{dados.dataSai}"/>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Valor da Reserva" />
+									</f:facet>
+									<h:outputText value="#{dados.valorFinal}">
+										<f:convertNumber type="currency" />
+									</h:outputText>	
+								</h:column>
+								<h:column styleClass="td-actions text-right">
+									<f:facet name="header">
+										<h:outputText value="Ações"/>
+									</f:facet>
+									<h:commandButton value="EDITAR" styleClass="btn btn-raised btn-default btn-xs" action="editReserva" actionListener="#{reservaBean.selecionarReg}" style="margin-right: 10px;"/>
+									<h:commandButton value="DELETAR" styleClass="btn btn-raised btn-danger btn-xs" action="delReserva" actionListener="#{reservaBean.selecionarReg}" />
+									
+								</h:column>	
+							</h:dataTable>
+	    				</h:form>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	</ui:define>
+</ui:composition>
+
+</html>

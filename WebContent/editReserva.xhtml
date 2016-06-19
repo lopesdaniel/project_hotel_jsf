@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/WEB-INF/templates/index.xhtml">
+	<ui:define name="content">
+		<div class="page-header">
+             <h1>Atualizar Reserva</h1>
+	    </div>
+	    <div class="page-body">   
+	    	<div class="col-lg-6">
+	    		<h:form name="formreserva">
+	    			<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Cliente</label>
+							<h:selectOneMenu value="#{reservaBean.reserva.cliente}" converter="clienteConverter" required="true" requiredMessage="Selecione o Cliente" styleClass="form-control">
+	                            <f:selectItem itemLabel="Escolha um Cliente"/>
+	                            <f:selectItems value="#{reservaBean.clientes}" var="cli" itemLabel="#{cli.nome}" itemValue="#{cli}" />
+	                        </h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Quarto</label>
+							
+	                            <h:outputLabel value="#{reservaBean.reserva.quarto.numero}" var="quar" itemLabel="#{quar.numero}" itemValue="#{quar}" />
+	                            
+						</div>
+					</div>
+					<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Data de Entrada</label>
+							<p:inputMask styleClass="form-control" value="#{reservaBean.reserva.dataEnt}" required="true" mask="99/99/9999" />
+						</div>
+					</div>
+					<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Data de Saída</label>
+							<p:inputMask name="name" styleClass="form-control" value="#{reservaBean.reserva.dataSai}" required="true" mask="99/99/9999" />
+						</div>
+					</div>
+					<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Valor Quarto</label>
+							<h:outputLabel name="valor" id="valor" styleClass="form-control" value="#{reservaBean.reserva.quarto.valor}">
+								<f:convertNumber type="currency" />
+							</h:outputLabel>	
+						</div>
+					</div>
+					<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Dias</label>
+							<p:spinner value="#{reservaBean.reserva.dias}" required="true" min="1" max="90" >
+								<p:ajax event="blur" listener="#{reservaBean.calcular()}" update="vtotal" />
+							</p:spinner>
+						</div>
+					</div>
+					<div class="form-group label-floating has-info">
+	    				<div class="col-lg-14">
+							<label class="control-label">Valor da Reserva</label>
+							<h:outputLabel name="vtotal" id="vtotal" styleClass="form-control" value="#{reservaBean.reserva.valorFinal}">
+								<f:convertNumber type="currency" />
+							</h:outputLabel>	
+						</div>
+					</div>
+					<h:commandButton  value="Atualizar" action="#{reservaBean.updateReserva}" styleClass="btn btn-raised btn-info"/>
+					&nbsp;
+					<h:commandButton value="Limpar" styleClass="btn btn-raised btn-default btn-right" type="reset" />
+	    		</h:form>	   
+	    		<br /><br /><br /><br /><br /><br /> 		
+			</div>
+			
+		</div>		
+		
+	</ui:define>
+	
+</ui:composition>
+
+
+
+
+</html>	   
